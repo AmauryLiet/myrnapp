@@ -8,7 +8,7 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, View, Image} from 'react-native';
+import {StyleSheet, View, ImageBackground} from 'react-native';
 
 type Props = {};
 
@@ -17,19 +17,12 @@ const IMAGE_URL = "https://www.uefa.com/MultimediaFiles/Photo/competitions/Gener
 export default class App extends Component<Props> {
   render() {
     return (
-      <View style={styles.container}>
-        <Image source={{uri: IMAGE_URL}} style={styles.image}/>
-      </View>
+      <ImageBackground source={{uri: IMAGE_URL}} style={styles.image}/>
     );
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    justifyContent: 'center',
-    alignItems: 'stretch',
-  },
   welcome: {
     fontSize: 20,
     textAlign: 'center',
@@ -37,5 +30,9 @@ const styles = StyleSheet.create({
   },
   image: {
     flex: 1,
+    width: null,
+    height: null,
+    resizeMode: 'cover',
+    justifyContent: 'flex-start',
   },
 });
