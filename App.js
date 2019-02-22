@@ -8,17 +8,24 @@
  */
 
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, ImageBackground} from 'react-native';
+import { StyleSheet, Text, ImageBackground } from 'react-native';
+
+import UrlText from './components/UrlText';
 
 type Props = {};
 
-const IMAGE_URL = "https://www.uefa.com/MultimediaFiles/Photo/competitions/General/02/55/45/13/2554513_w1.jpg";
+const IMAGE_URL =
+  'https://www.uefa.com/MultimediaFiles/Photo/competitions/General/02/55/45/13/2554513_w1.jpg';
+const MORE_INFO_URL = 'https://github.com/AmauryLiet/myrnapp';
 
 export default class App extends Component<Props> {
   render() {
     return (
       <ImageBackground source={{uri: IMAGE_URL}} style={styles.image}>
         <Text style={styles.welcome}>Welcome</Text>
+        <UrlText style={styles.moreInfo} url={MORE_INFO_URL}>
+          More info
+        </UrlText>
       </ImageBackground>
     );
   }
@@ -36,6 +43,10 @@ const styles = StyleSheet.create({
     width: null,
     height: null,
     resizeMode: 'cover',
-    justifyContent: 'flex-start',
+    justifyContent: 'space-between'
   },
+  moreInfo: {
+    textAlign: 'right',
+    margin: 20
+  }
 });
