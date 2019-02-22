@@ -8,7 +8,7 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, ImageBackground } from 'react-native';
+import { StyleSheet, Text, View, ImageBackground } from 'react-native';
 
 import UrlText from './components/UrlText';
 
@@ -22,7 +22,10 @@ export default class App extends Component<Props> {
   render() {
     return (
       <ImageBackground source={{ uri: IMAGE_URL }} style={styles.image}>
-        <Text style={styles.welcome}>Welcome</Text>
+        <View>
+          <Text style={styles.welcome}>Welcome</Text>
+          <Text style={styles.elapsedTime}>7 hours ago</Text>
+        </View>
         <UrlText style={styles.moreInfo} url={MORE_INFO_URL}>
           More info
         </UrlText>
@@ -36,6 +39,10 @@ const styles = StyleSheet.create({
     fontSize: 50,
     textAlign: 'center',
     marginTop: 30,
+    color: 'white'
+  },
+  elapsedTime: {
+    textAlign: 'center',
     color: 'white'
   },
   image: {
