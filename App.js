@@ -7,7 +7,7 @@
  * @lint-ignore-every XPLATJSCOPYRIGHT1
  */
 
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import { StyleSheet, Text, ImageBackground } from 'react-native';
 
 import UrlText from './components/UrlText';
@@ -21,7 +21,7 @@ const MORE_INFO_URL = 'https://github.com/AmauryLiet/myrnapp';
 export default class App extends Component<Props> {
   render() {
     return (
-      <ImageBackground source={{uri: IMAGE_URL}} style={styles.image}>
+      <ImageBackground source={{ uri: IMAGE_URL }} style={styles.image}>
         <Text style={styles.welcome}>Welcome</Text>
         <UrlText style={styles.moreInfo} url={MORE_INFO_URL}>
           More info
