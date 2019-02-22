@@ -8,30 +8,50 @@
  */
 
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, ImageBackground } from 'react-native';
-
-import UrlText from './components/UrlText';
+import { StyleSheet, Text, View, ScrollView, Image } from 'react-native';
 
 type Props = {};
 
 const IMAGE_URL =
   'https://www.uefa.com/MultimediaFiles/Photo/competitions/General/02/55/45/13/2554513_w1.jpg';
-const MORE_INFO_URL = 'https://github.com/AmauryLiet/myrnapp';
 
 export default class App extends Component<Props> {
+  state = { openDescription: false };
+
   render() {
     return (
-      <ImageBackground source={{ uri: IMAGE_URL }} style={styles.image}>
+      <ScrollView scrollEnabled={this.state.openDescription}>
+        <Image source={{ uri: IMAGE_URL }} style={styles.image} />
+        {this.renderBody()}
+      </ScrollView>
+    );
+  }
+
+  renderBody = () => {
+    return (
+      <ScrollView scrollEnabled={this.state.openDescription}>
         <View>
           <Text style={styles.welcome}>Welcome</Text>
           <Text style={styles.elapsedTime}>7 hours ago</Text>
         </View>
-        <UrlText style={styles.moreInfo} url={MORE_INFO_URL}>
+        <View style={styles.divider} />
+        <Text style={styles.moreInfo} onPress={this.handlePress}>
           More info
-        </UrlText>
-      </ImageBackground>
+        </Text>
+        {this.state.openDescription && (
+          <View>
+            <Text>A description</Text>
+            <Text>on mutliple</Text>
+            <Text>line</Text>
+          </View>
+        )}
+      </ScrollView>
     );
-  }
+  };
+
+  handlePress = () => {
+    this.setState({ openDescription: !this.state.openDescription });
+  };
 }
 
 const styles = StyleSheet.create({
@@ -46,14 +66,19 @@ const styles = StyleSheet.create({
     color: 'white'
   },
   image: {
-    flex: 1,
-    width: null,
-    height: null,
+    position: 'absolute',
+    height: '100%',
+    width: '100%',
     resizeMode: 'cover',
-    justifyContent: 'space-between'
+    top: 0,
+    left: 0
+  },
+  divider: {
+    height: 620
   },
   moreInfo: {
     textAlign: 'right',
-    margin: 20
+    margin: 20,
+    color: 'blue'
   }
 });
